@@ -188,7 +188,7 @@ public class Estante implements ActionListener
         campoID.setBounds(120,10, 200, 30);
         
         JLabel rotuloNome = new JLabel("Titulo da Estante:");
-        rotuloNome.setBounds(120, 50, 100, 30);
+        rotuloNome.setBounds(10, 50, 100, 30);
         this.campoNome = new JTextField(this.getNome());
         this.campoNome.setBounds(120,50, 200, 30);
         
