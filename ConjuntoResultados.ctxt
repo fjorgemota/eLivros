@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=rs
+comment0.target=ConjuntoResultados(java.sql.ResultSet)
+comment1.params=
+comment1.target=boolean\ next()
+comment2.params=t
+comment2.target=java.lang.String\ getString(java.lang.String)
+numComments=3
