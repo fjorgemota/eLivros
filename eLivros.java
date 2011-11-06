@@ -51,7 +51,7 @@ public class eLivros implements ActionListener
         refreshItem.addActionListener(this);
         this.fileMenu.add(refreshItem);
         this.fileMenu.addSeparator();
-        JMenuItem emprestarItem = new JMenuItem("Solicitar EmprÈstimo");
+        JMenuItem emprestarItem = new JMenuItem("Solicitar Empr√©stimo");
         emprestarItem.addActionListener(this);
         this.fileMenu.add(emprestarItem);
         JMenuItem devolverItem = new JMenuItem("Devolver Livro");
@@ -103,8 +103,8 @@ public class eLivros implements ActionListener
         String itemText = item.getText();
         if(itemText.substring(0,3).equals("Ver")){
             this.mode = this.mode == "livro"?"estante":(this.mode == "emprestimo"?"livro":"emprestimo");
-            itemText = "Ver "+(this.mode == "livro"?"Estantes":(this.mode == "estante"?"EmprÈstimos":"Livros"));
-            this.fileMenu.getItem(0).setText((this.mode == "livro"?"Novo Livro":(this.mode == "estante"?"Nova Estante":"Novo EmprÈstimo")));
+            itemText = "Ver "+(this.mode == "livro"?"Estantes":(this.mode == "estante"?"Empr√©stimos":"Livros"));
+            this.fileMenu.getItem(0).setText((this.mode == "livro"?"Novo Livro":(this.mode == "estante"?"Nova Estante":"Novo Empr√©stimo")));
             item.setText(itemText);
             this.atualizar();
         }
@@ -159,7 +159,7 @@ public class eLivros implements ActionListener
                 emprestimo.cadastrar();
             }
         }
-        else if(itemText.equals("Solicitar EmprÈstimo")){
+        else if(itemText.equals("Solicitar Empr√©stimo")){
             Emprestimo.emprestar();
         }
         else if(itemText.equals("Devolver Livro")){
@@ -173,7 +173,7 @@ public class eLivros implements ActionListener
             aboutWindow.setLayout(null);
             aboutWindow.setSize(400,450);
             aboutWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-            JTextArea texto = new JTextArea("Dedico este software exclusivamente aos meus familiares - que me \napoiaram para a criaÁ„o do mesmo - E ‡ Deus, que me deu forÁas para que eu pudesse cri·-lo de maneira competente. AgradeÁo tambÈm ‡†\nvocÍ pelo uso deste software, que ser· liberado em breve sob cÛdigo livre no endereÁo http://fjorgemota.github.com/ . \nSoftware criado por Fernando Jorge Mota\nPara o Curso TÈcnico Articulado em Inform·tica",60,400);
+            JTextArea texto = new JTextArea("Dedico este software exclusivamente aos meus familiares - que me \napoiaram para a cria√ß√£o do mesmo - E √† Deus, que me deu for√ßas para que eu pudesse cri√°-lo de maneira competente. Agrade√ßo tamb√©m √† \nvoc√™ pelo uso deste software, que ser√° liberado em breve sob c√≥digo livre no endere√ßo http://fjorgemota.github.com/ . \nSoftware criado por Fernando Jorge Mota\nPara o Curso T√©cnico Articulado em Inform√°tica\noutubro de 2011",60,400);
             texto.setBounds(10, 10,400, 450);
             texto.setEditable(false);
             texto.setLineWrap(true);

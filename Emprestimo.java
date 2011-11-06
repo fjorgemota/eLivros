@@ -143,10 +143,10 @@ public class Emprestimo implements ActionListener
         return this.devolvido;
     }
     public boolean isDevolvido(){
-        return (this.devolvido == 1);
+        return this.devolvido == 1;
     }
     public void setDevolvido(boolean devolvido){
-        if(devolvido){
+        if(devolvido==true){
             this.devolvido = 1;
         }
         else{
@@ -162,7 +162,7 @@ public class Emprestimo implements ActionListener
         }
     }
     public void setDevolvido(String devolvido){
-        if(devolvido.equals("0")){
+        if(devolvido=="0"){
             this.devolvido = 0;
         }
         else{
@@ -174,7 +174,7 @@ public class Emprestimo implements ActionListener
             return null;
         }
         this.mode = "editar";
-        this.window = new JFrame("Editar Empréstimo do Livro "+this.getLivro().getTitulo()+" para "+this.getNome());
+        this.window = new JFrame("Editar EmprÃ©stimo do Livro "+this.getLivro().getTitulo()+" para "+this.getNome());
         this.window.setLayout(null);
         this.window.setSize(400,450);
         this.window.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -246,7 +246,7 @@ public class Emprestimo implements ActionListener
             return null;
         }
         this.mode = "cadastrar";
-        this.window = new JFrame("Cadastrar Empréstimo");
+        this.window = new JFrame("Cadastrar EmprÃ©stimo");
         this.window.setLayout(null);
         this.window.setSize(400,450);
         this.window.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -305,7 +305,7 @@ public class Emprestimo implements ActionListener
         return this.window;
     }
     public static JFrame emprestar(){
-        final JFrame window = new JFrame("Solicitar Empréstimo");
+        final JFrame window = new JFrame("Solicitar EmprÃ©stimo");
         window.setLayout(null);
         window.setSize(400,400);
         window.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -348,7 +348,7 @@ public class Emprestimo implements ActionListener
                     
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Houve um erro durante o registro do empréstimo");
+                    JOptionPane.showMessageDialog(null,"Houve um erro durante o registro do emprÃ©stimo");
                 }
                 window.setVisible(false);
             }
@@ -406,7 +406,7 @@ public class Emprestimo implements ActionListener
         }
         final JTextField campoTelefone = new JFormattedTextField(telFormat);
         campoTelefone.setBounds(120,90,200,30);
-        JButton botaoEmprestar = new JButton("Devolver");
+        JButton botaoEmprestar = new JButton("Emprestar");
         botaoEmprestar.setBounds(10,130,100,30);
         botaoEmprestar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -415,9 +415,8 @@ public class Emprestimo implements ActionListener
                     JOptionPane.showMessageDialog(null,"Livro devolvido com sucesso!");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Houve um erro durante a atualização do empréstimo do livro!");
+                    JOptionPane.showMessageDialog(null,"Houve um erro durante a atualizaÃ§Ã£o do emprÃ©stimo do livro!");
                 }
-                window.setVisible(false);
             }
         });
         JButton botaoCancelar = new JButton("Cancelar");
@@ -447,10 +446,10 @@ public class Emprestimo implements ActionListener
             if(this.getLivro() == null){
                 JOptionPane.showMessageDialog(null,"Informe um livro atraves do metodo setLivro!");
             }
-            String sql = "INSERT INTO emprestimo(nome,telefone,devolvido,Livro_id) VALUES(\""+this.getNome()+"\",\""+this.getTelefone()+"\","+this.getDevolvido()+","+this.getLivro().getID()+");";
+            String sql = "INSERT INTO emprestimo(nome,telefone,Livro_id) VALUES(\""+this.getNome()+"\",\""+this.getTelefone()+"\","+this.getLivro().getID()+");";
             deuCerto = mysql.executaInsert(sql);
             if(deuCerto){
-                sql = "SELECT id FROM emprestimo WHERE nome=\""+this.getNome()+"\" AND telefone=\""+this.getTelefone()+"\" AND devolvido="+this.getDevolvido()+" AND Livro_id=\""+this.getLivro().getID()+"\" ORDER BY id DESC LIMIT 1;";
+                sql = "SELECT id FROM emprestimo WHERE nome=\""+this.getNome()+"\" AND telefone=\""+this.getTelefone()+"\" AND Livro_id=\""+this.getLivro().getID()+"\" ORDER BY id DESC LIMIT 1;";
                 ConjuntoResultados lista = mysql.executaSelect(sql);
                 lista.next();
                 this.setID(lista.getString("id"));
@@ -464,7 +463,7 @@ public class Emprestimo implements ActionListener
             if(this.getLivro() == null){
                 JOptionPane.showMessageDialog(null,"Informe um livro atraves do metodo setLivro!");
             }
-            String sql = "UPDATE emprestimo SET nome=\""+this.getNome()+"\", telefone=\""+this.getTelefone()+"\", devolvido="+this.getDevolvido()+", Livro_id=\""+this.getLivro().getID()+"\" WHERE id="+this.getID()+";";
+            String sql = "UPDATE emprestimo SET nome=\""+this.getNome()+"\", telefone=\""+this.getTelefone()+"\", Livro_id=\""+this.getLivro().getID()+"\" WHERE id="+this.getID()+";";
             deuCerto = mysql.executaUpdate(sql);
         }
         return deuCerto;
@@ -486,12 +485,12 @@ public class Emprestimo implements ActionListener
         }
     }
      public void excluir(){
-        if(JOptionPane.showConfirmDialog(null,"Deseja realmente apagar este empréstimo?", "Deseja realmente apagar este empréstimo?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"ConfirmaÃ§Ã£o", "Deseja realmente apagar este emprÃ©stimo?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             if(this.apaga()){
-                JOptionPane.showMessageDialog(null,"Empréstimo apagado com sucesso!");
+                JOptionPane.showMessageDialog(null,"EmprÃ©stimo apagado com sucesso!");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Houve um erro durante o apagamento do empréstimo!");
+                JOptionPane.showMessageDialog(null,"Houve um erro durante o apagamento do emprÃ©stimo!");
             }
         }
     }
@@ -635,7 +634,7 @@ public class Emprestimo implements ActionListener
             else{
                 lista[c][4] = "Sem Estante definida";
             }
-            lista[c][5] = (emprestimo.getDevolvido()==1?"Sim":"Não");
+            lista[c][5] = emprestimo.isDevolvido()?"Sim":"NÃ£o";
         }
         JTable table = new JTable(lista, columns){  
             public boolean isCellEditable(int row,int column){  
@@ -658,7 +657,7 @@ public class Emprestimo implements ActionListener
             this.setLivro((Livro)this.campoLivro.getSelectedItem());
             this.setDevolvido(this.campoDevolvido.isSelected());
             if(this.salvar()){
-                JOptionPane.showMessageDialog(null,"Empréstimo Cadastrado com Sucesso!");
+                JOptionPane.showMessageDialog(null,"EmprÃ©stimo Cadastrado com Sucesso!");
             }
             else{
                 JOptionPane.showMessageDialog(null,"Houve um erro durante o cadastro do livro");
@@ -672,10 +671,10 @@ public class Emprestimo implements ActionListener
                 this.setLivro((Livro)this.campoLivro.getSelectedItem());
                 this.setDevolvido(this.campoDevolvido.isSelected());
                 if(this.salvar()){
-                    JOptionPane.showMessageDialog(null,"Empréstimo Editado com Sucesso!");
+                    JOptionPane.showMessageDialog(null,"EmprÃ©stimo Editado com Sucesso!");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Houve um erro durante a Edicao do Empréstimo");
+                    JOptionPane.showMessageDialog(null,"Houve um erro durante a Edicao do EmprÃ©stimo");
                 }
             }
             else{

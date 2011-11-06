@@ -154,7 +154,7 @@ public class Livro implements ActionListener
     }
     public void setEstante(String estante){
         if(estante.trim().equals("")){
-            JOptionPane.showMessageDialog(null, "Informe uma estante válida!");
+            JOptionPane.showMessageDialog(null, "Informe uma estante vÃ¡lida!");
         }
         else{
             this.estante = Estante.getEstante(Integer.parseInt(estante));
@@ -170,7 +170,7 @@ public class Livro implements ActionListener
         if(this.getID()==-1){ 
             //Inserindo
             if(this.getEstante() == null){
-                JOptionPane.showMessageDialog(null,"Informe uma estante através do método setEstante!");
+                JOptionPane.showMessageDialog(null,"Informe uma estante atraves do metodo setEstante!");
             }
             String sql = "INSERT INTO livros (titulo, autor, descricao, anoLancamento, Estante_id) VALUES (\""+this.getTitulo()+"\",\""+this.getAutor()+"\",\""+this.getDescricao()+"\",\""+this.getAnoLancamentoString()+"\", "+this.getEstante().getID()+");";
             deuCerto = mysql.executaInsert(sql);
@@ -187,7 +187,7 @@ public class Livro implements ActionListener
         boolean deuCerto = false;
         if(this.getID() != -1){
             if(this.getEstante() == null){
-                JOptionPane.showMessageDialog(null,"Informe uma estante através do método setEstante!");
+                JOptionPane.showMessageDialog(null,"Informe uma estante atraves do metodo setEstante!");
             }
             String sql = "UPDATE livros SET titulo=\""+this.getTitulo()+"\", autor=\""+this.getAutor()+"\", descricao=\""+this.getDescricao()+"\", anoLancamento=\""+this.getAnoLancamentoString()+"\", Estante_id="+this.getEstante().getID()+" WHERE id="+this.getID()+";";
             deuCerto = mysql.executaUpdate(sql);
@@ -331,13 +331,13 @@ public class Livro implements ActionListener
         this.campoAutor.setBounds(120, 50, 200, 30);
         
         //Campo Descricao
-        JLabel rotuloDescricao = new JLabel("Descrição:");
+        JLabel rotuloDescricao = new JLabel("DescriÃ§Ã£o:");
         rotuloDescricao.setBounds(10, 90, 100, 90);
         this.campoDescricao = new JTextArea(3,200);
         this.campoDescricao.setBounds(120, 90, 200, 90);
         
         //Campo Ano Lancamento
-        JLabel rotuloAnoLancamento = new JLabel("Lançamento:");
+        JLabel rotuloAnoLancamento = new JLabel("LanÃ§amento:");
         rotuloAnoLancamento.setBounds(10, 190, 100, 30);
         this.campoAnoLancamento = new JDateField(this.getAnoLancamento(),this._dateFormat);
         this.campoAnoLancamento.setBounds(120, 190, 200, 30);
@@ -370,7 +370,7 @@ public class Livro implements ActionListener
         return this.window;
     }          
     public void excluir(){
-        if(JOptionPane.showConfirmDialog(null,"Deseja realmente apagar este livro?", "Deseja realmente apagar este livro?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"ConfirmaÃ§Ã£o", "Deseja realmente apagar este livro?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             if(this.apaga()){
                 JOptionPane.showMessageDialog(null,"Livro apagado com sucesso!");
             }

@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class MySQL{
     Statement statement;    
-    String user = "root";
-    String pass = "senai2011";
+    String user = "root";// Sete a senha do seu usuário MySQL aqui
+    String pass = "suasenhaaqui";//sete a senha do seu MySQL aqui
     String database = "elivros";
     String host = "localhost";
    

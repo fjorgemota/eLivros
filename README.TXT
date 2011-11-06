@@ -1,7 +1,12 @@
--------------------------------------------------
-eLivros
--------------------------------------------------
+------------------------------------------------------------------------
+This is the project README file. Here, you should describe your project.
+Tell the reader (someone who does not know anything about this project)
+all he/she needs to know. The comments should usually include at least:
+------------------------------------------------------------------------
 
-Project created in BlueJ(and Java) by the student Fernando Jorge Mota, allow the management of books, shelf and others.
-
-Use and enjoy yourself! (or not)
+PROJECT TITLE:
+PURPOSE OF PROJECT:
+VERSION or DATE:
+HOW TO START THIS PROJECT:
+AUTHORS:
+USER INSTRUCTIONS:

@@ -95,12 +95,12 @@ public class Estante implements ActionListener
         if(this.getID() != -1){
             List<Livro> livros = Livro.getLivrosByEstante(this);
             if(livros.size()>0){
-                if(JOptionPane.showConfirmDialog(null,"Deseja apagar os livros desta estante? (se escolher 'não' eles serão migrados para outra Estante)", "Deseja apagar os livros desta estante? (se escolher 'não' eles serão migrados para outra Estante)",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
+                if(JOptionPane.showConfirmDialog(null,"Deseja apagar os livros desta estante? (se escolher 'nÃ£o' eles serÃ£o migrados para outra Estante)", "Deseja apagar os livros desta estante? (se escolher 'nÃ£o' eles serÃ£o migrados para outra Estante)",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
                     for(int c=0;c<livros.size();c++){
                         livros.get(c).apaga();
                     }
                 }
-                else if( Estante.getEstantes().size()>1){
+                else{
                     if(this.mode != null){
                         return 0;
                     }
@@ -109,11 +109,10 @@ public class Estante implements ActionListener
                     this.window.setLayout(null);
                     this.window.setSize(400,200);
                     this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    JLabel rotulo = new JLabel("Selecione a estante para o qual os "+livros.size()+" livros deverão ser migrados:");
+                    JLabel rotulo = new JLabel("Selecione a estante para o qual os "+livros.size()+" livros deverÃ£o ser migrados:");
                     rotulo.setBounds(10,10,380,30);
                     this.campoEstante = new JComboBox();
                     Iterator<Estante> estantes = Estante.getEstantes().iterator();
- 
                     while(estantes.hasNext()){
                         Estante estante = estantes.next();
                         if(!estante.toString().equals(this.toString())){
@@ -131,9 +130,6 @@ public class Estante implements ActionListener
                     this.window.add(botao);
                     this.window.setVisible(true);
                     return 2;
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"A migração não é possível pois não há mais estantes cadastradas! Cadastre novas estantes ou tente novamente e selecione a opção 'Sim'");
                 }
             }
             String sql = "DELETE FROM estante WHERE id="+this.getID()+";";
@@ -188,7 +184,7 @@ public class Estante implements ActionListener
         campoID.setBounds(120,10, 200, 30);
         
         JLabel rotuloNome = new JLabel("Titulo da Estante:");
-        rotuloNome.setBounds(10, 50, 100, 30);
+        rotuloNome.setBounds(120, 50, 100, 30);
         this.campoNome = new JTextField(this.getNome());
         this.campoNome.setBounds(120,50, 200, 30);
         
@@ -222,7 +218,7 @@ public class Estante implements ActionListener
         
         
         JLabel rotuloNome = new JLabel("Titulo da Estante:");
-        rotuloNome.setBounds(10, 10, 100, 30);
+        rotuloNome.setBounds(120, 10, 100, 30);
         this.campoNome = new JTextField(this.getNome());
         this.campoNome.setBounds(120,10, 200, 30);
         
@@ -246,7 +242,7 @@ public class Estante implements ActionListener
                 JOptionPane.showMessageDialog(null,"Estante cadastrada com Sucesso!");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Houve um erro durante o cadastro da estante");
+                JOptionPane.showMessageDialog(null,"Houve um erro durante o cadastro do livro");
             }
         }
         else if(this.mode == "editar"){
@@ -258,7 +254,7 @@ public class Estante implements ActionListener
                     JOptionPane.showMessageDialog(null,"Estante editada com Sucesso!");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Houve um erro durante a Edição da estante");
+                    JOptionPane.showMessageDialog(null,"Houve um erro durante a Edicao da estante");
                 }
             }
             else{
@@ -272,7 +268,7 @@ public class Estante implements ActionListener
                 Livro livro = livros.get(c);
                 livro.setEstante((Estante)this.campoEstante.getSelectedItem());
                 if(!livro.salvar()){
-                    JOptionPane.showMessageDialog(null,"Houve um erro durante a transferência do Item");
+                    JOptionPane.showMessageDialog(null,"Houve um erro durante a transferÃªncia do Item");
                 }
             }
             int deuCerto = this.apaga();
