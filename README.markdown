@@ -1,6 +1,6 @@
 #eLivros
 
-Este aplicativo foi criado pelo aluno [Fernando Jorge Mota][1] apenas para a realização de um desafio proposto pelo professor [Kaléu Caminha][2] para a Turma de Curso Técnico Articulado em Informática do [SENAI/SJ-SC][3].
+Este aplicativo foi criado pelo aluno [Fernando Jorge Mota][1] apenas para a realiza&ccedil;&atilde;o de um desafio proposto pelo professor [Kal&eacute;u Caminha][2] para a Turma de Curso T&eacute;cnico Articulado em Inform&aacute;tica do [SENAI/SJ-SC][3].
 
 Se quiser, siga este aluno pelo [Twitter][4] ou mesmo pelo [Github][1]. 
 
